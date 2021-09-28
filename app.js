@@ -1,5 +1,34 @@
 'use strict';
 
+let files = 
+bag.jpg
+banana.jpg
+bathroom.jpg
+boots.jpg
+breakfast.jpg
+bubblegum.jpg
+chair.jpg
+cthulhu.jpg
+dog-duck.jpg
+dragon.jpg
+pen.jpg
+pet-sweep.jpg
+scissors.jpg
+shark.jpg
+sweep.jpg
+tauntaun.jpg
+unicorn.jpg
+water-can.jpg
+water-can.jpg
+wine-glass
+
+
+
+
+
+
+
+
 let imageOne = document.getElementById('itemOne');
 let imageTwo = document.getElementById('itemTwo');
 let imageThree = document.getElementById('itemThree');
