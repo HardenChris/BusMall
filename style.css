@@ -1,0 +1,18 @@
+#grid {
+display: grid;
+border: thin black solid;
+grid-template-columns: 450px 450px 450px;
+grid-template-rows: 800px;
+}
+
+#itemOne{
+grid-column-start: 1;
+}
+
+#itemTwo{
+grid-column-start: 2;
+}
+
+#itemThree{
+grid-column-start: 3;
+}
