@@ -48,7 +48,7 @@ productionItems.push(
   new ProductAddition('dog-duck', 'img/dog-duck.jpg'),
   new ProductAddition('dragon', 'img/dragon.jpg'),
   new ProductAddition('pen', 'img/pen.jpg'),
-  new ProductAddition('pet-sweep', 'img/pet-swee.jpg'),
+  new ProductAddition('pet-sweep', 'img/pet-sweep.jpg'),
   new ProductAddition('scissors', 'img/scissors.jpg'),
   new ProductAddition('shark', 'img/shark.jpg'),
   new ProductAddition('sweep', 'img/sweep.jpg'),
@@ -74,7 +74,7 @@ const pickNewProducts = function(){
   //  console.log(finalOne)
   return [finalOne,finalTwo,finalThree];
 };
-//console.log(pickNewProducts());
+console.log(pickNewProducts());
 
 const finalArray = pickNewProducts();
 //console.log(finalArray)
@@ -88,10 +88,23 @@ const validation = function(finalArray){
   }
   return tempArray;
 };
-console.log(validation);
+// console.log(validation);
 
-validation(finalArray);
+// validation(finalArray);
 
+// console.log(validation(finalArray));
 
-console.log(validation(finalArray));
-console.log(pickNewProducts());
+let validArray = validation(finalArray);
+
+console.log(validArray);
+
+let itemHolder = document.getElementById('grid');
+console.log(itemHolder);
+
+function itemRender(validArray) {
+  for (let i = 0; i < validArray.length; i++) {
+    let itemEl = document.createElement('img');
+    itemEl.setAttribute('src', validArray[i].imgPath);
+    itemHolder.appendChild(itemEl);
+  }
+}
