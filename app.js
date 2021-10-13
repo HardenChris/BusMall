@@ -22,8 +22,8 @@
 //water-can.jpg;
 //wine-glass;
 
-
-
+let numberOfRounds = 0;
+let maxRounds = 25;
 ////make a prod Array
 const productionItems = [];
 ////using con fn create a new object for each prod
@@ -32,10 +32,15 @@ const ProductAddition = function (newName, currentLocation) {
     name: newName,
     imgPath: currentLocation,
     numberOfTimesShown: 0,
+    clickCount: 0,
   };
   return object207;
 };
-  ////console.log(temp('bag', 'img/loo'));
+
+
+// name + ' had ' + clickCount + ' votes, and was seen ' + numberOfTimesShown + ' times.'
+
+////console.log(temp('bag', 'img/loo'));
 productionItems.push(
   new ProductAddition('bag', 'img/bag.jpg'),
   new ProductAddition('banana', 'img/banana.jpg'),
@@ -68,15 +73,12 @@ const pickNewProducts = function(){
   const selectedObjOne = productionItems[imageOne];
   const selectedObjTwo = productionItems[imageTwo];
   const selectedObjThree = productionItems[imageThree];
-  const finalOne = selectedObjOne.imgPath;
-  const finalTwo = selectedObjTwo.imgPath;
-  const finalThree = selectedObjThree.imgPath;
   //  console.log(finalOne)
-  return [finalOne,finalTwo,finalThree];
+  return [selectedObjOne,selectedObjTwo,selectedObjThree];
 };
-console.log(pickNewProducts());
+// console.log(pickNewProducts());
 
-const finalArray = pickNewProducts();
+let finalArray = pickNewProducts();
 //console.log(finalArray)
 const validation = function(finalArray){
   let tempArray = finalArray;
@@ -98,13 +100,48 @@ let validArray = validation(finalArray);
 
 console.log(validArray);
 
-let itemHolder = document.getElementById('grid');
-console.log(itemHolder);
+
+// console.log(itemHolder);
 
 function itemRender(validArray) {
+  let itemHolder = document.getElementById('grid');
   for (let i = 0; i < validArray.length; i++) {
+    console.log(validArray[i]);
     let itemEl = document.createElement('img');
     itemEl.setAttribute('src', validArray[i].imgPath);
     itemHolder.appendChild(itemEl);
+    validArray[i].numberOfTimesShown = validArray[i].numberOfTimesShown + 1;
+    itemEl.addEventListener('click', function addOneToCount(event){
+      event.preventDefault();
+      console.log(event);console.log(validArray[i]);
+      validArray[i].clickCount = validArray[i].clickCount + 1;
+      recall(event);
+    });
   }
 }
+itemRender(validArray);
+// console.log(itemHolder);
+
+function recall(){
+  finalArray = pickNewProducts();
+  validArray = validation(finalArray);
+  itemRender(validArray);
+  numberOfRounds = numberOfRounds + 1;
+  console.log(numberOfRounds);
+  if (numberOfRounds === maxRounds){
+    // console.log('me work');
+    let viewButtonEl = document.createElement('view-results');
+    viewButtonEl.addEventListener('click', function openResults(event){
+      event.preventDefault();
+      for (let i = 0; i < productionItems.length; i++){
+        name + ' had ' + clickCount + ' votes, and was seen ' + numberOfTimesShown + ' times.';
+      }
+    });
+  }
+}
+
+// let newName = JSON.stringify(productionItems);
+// localStorage.setItem(newName);
+// localStorage.getItem(newName);
+// let tempNew = JSON.parse(newName);
+
